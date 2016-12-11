@@ -1,6 +1,6 @@
 {
     "name": "faonni/module-browser",
-    "description": "",
+    "description": "Extension determines the capabilities of the customer's browser.",
     "type": "magento2-module",
 	"version": "2.0.1",
 	"license": [
