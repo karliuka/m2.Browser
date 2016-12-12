@@ -39,7 +39,7 @@ class VisitorObserver implements ObserverInterface
     {
 		$visitor = $observer->getEvent()->getVisitor();
 		$browser = get_browser(null, true);
-		
+
 		if ($browser) {
 			$data = [	
 				'crawler'  => 0,
@@ -54,13 +54,13 @@ class VisitorObserver implements ObserverInterface
 				'issyndicationreader' => 0, 
 			];
 			foreach ($data as $key => $value) {
-				if (!empty($browser[$key]) && !in_array($browser[$key], ['unknown'])) {
+				if (!empty($browser[$key])) {
 					$data[$key] = $browser[$key];
 				}
 			}
 			$visitor->addData($data);
 			$visitor->save();
 		}	
-        return $this;
+		return $this;
     }
 }  
