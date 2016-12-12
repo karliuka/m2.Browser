@@ -30,7 +30,7 @@ use Magento\Framework\Event\ObserverInterface;
 class VisitorObserver implements ObserverInterface
 {
     /**
-     * Handler for customer session init event
+     * Handler for visitor init event
      *
      * @param Observer $observer
      * @return void
@@ -38,7 +38,29 @@ class VisitorObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
 		$visitor = $observer->getEvent()->getVisitor();
-
+		$browser = get_browser(null, true);
+		
+		if ($browser) {
+			$data = [	
+				'crawler'  => 0,
+				'browser'  => '',	
+				'version'  => '',	
+				'platform' => '', 
+				'platform_version'    => '', 
+				'device_name'         => '', 
+				'device_maker'        => '',	
+				'ismobiledevice'      => 0,
+				'istablet'            => 0, 
+				'issyndicationreader' => 0, 
+			];
+			foreach ($data as $key => $value) {
+				if (!empty($browser[$key]) && !in_array($browser[$key], ['unknown'])) {
+					$data[$key] = $browser[$key];
+				}
+			}
+			$visitor->addData($data);
+			$visitor->save();
+		}	
         return $this;
     }
 }  
