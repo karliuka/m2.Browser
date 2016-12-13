@@ -41,6 +41,12 @@ class VisitorObserver implements ObserverInterface
 		$browser = get_browser(null, true);
 
 		if ($browser) {
+			$map = [
+				'ismobiledevice'      => 'is_mobile',
+				'istablet'            => 'is_tablet', 
+				'issyndicationreader' => 'is_reader', 
+				'crawler'             => 'is_crawler',
+			];			
 			$data = [	
 				'browser'  => '',	
 				'version'  => '',	
@@ -54,10 +60,13 @@ class VisitorObserver implements ObserverInterface
 				'is_reader'  => 0, 
 				'is_crawler' => 0,
 			];
-			foreach ($data as $key => $value) {
-				if (!empty($browser[$key])) {
-					$data[$key] = $browser[$key];
+			foreach ($browser as $key => $value) {
+				if (isset($map[$key])) {
+					$key = $map[$key];
 				}
+				if (!empty($value)) {
+					$data[$key] = $value;
+				}				
 			}
 			$visitor->addData($data);
 			$visitor->save();
