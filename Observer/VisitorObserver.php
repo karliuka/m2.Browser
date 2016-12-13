@@ -42,16 +42,17 @@ class VisitorObserver implements ObserverInterface
 
 		if ($browser) {
 			$data = [	
-				'crawler'  => 0,
 				'browser'  => '',	
 				'version'  => '',	
 				'platform' => '', 
-				'platform_version'    => '', 
-				'device_name'         => '', 
-				'device_maker'        => '',	
-				'ismobiledevice'      => 0,
-				'istablet'            => 0, 
-				'issyndicationreader' => 0, 
+				'platform_version' => '', 
+				'device_name'  => '', 
+				'device_maker' => '',
+				'device_type'  => '',					
+				'is_mobile'  => 0,
+				'is_tablet'  => 0, 
+				'is_reader'  => 0, 
+				'is_crawler' => 0,
 			];
 			foreach ($data as $key => $value) {
 				if (!empty($browser[$key])) {

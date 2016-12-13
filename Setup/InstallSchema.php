@@ -32,8 +32,11 @@ use Magento\Framework\DB\Ddl\Table;
 class InstallSchema implements InstallSchemaInterface
 {
     /**
-     * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * Installs DB schema for a module Faonni_Browser
+     *
+     * @param SchemaSetupInterface $setup
+     * @param ModuleContextInterface $context
+     * @return void
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
@@ -118,19 +121,19 @@ class InstallSchema implements InstallSchemaInterface
         
         $connection->addColumn(
             $installer->getTable('customer_visitor'),
-            'device_maker',
+            'device_type',
             [
                 'type' => Table::TYPE_TEXT,
                 'length'   => 255,
                 'nullable' => false,
                 'default'  => '',
-                'comment'  => 'Name maker'
+                'comment'  => 'Device Type'
             ]
         );
         
         $connection->addColumn(
             $installer->getTable('customer_visitor'),
-            'issyndicationreader',
+            'is_reader',
             [
                 'type' => Table::TYPE_SMALLINT,
 				'unsigned' => true,
@@ -142,7 +145,7 @@ class InstallSchema implements InstallSchemaInterface
         
         $connection->addColumn(
             $installer->getTable('customer_visitor'),
-            'ismobiledevice',
+            'is_mobile',
             [
                 'type' => Table::TYPE_SMALLINT,
 				'unsigned' => true,
@@ -154,7 +157,7 @@ class InstallSchema implements InstallSchemaInterface
         
         $connection->addColumn(
             $installer->getTable('customer_visitor'),
-            'istablet',
+            'is_tablet',
             [
                 'type' => Table::TYPE_SMALLINT,
 				'unsigned' => true,
@@ -166,7 +169,7 @@ class InstallSchema implements InstallSchemaInterface
         
         $connection->addColumn(
             $installer->getTable('customer_visitor'),
-            'crawler',
+            'is_crawler',
             [
                 'type' => Table::TYPE_SMALLINT,
 				'unsigned' => true,
@@ -178,26 +181,32 @@ class InstallSchema implements InstallSchemaInterface
         
 		$connection->addIndex(
 			$installer->getTable('customer_visitor'),
-			$installer->getIdxName('customer_visitor', ['issyndicationreader']),
-			['issyndicationreader']
+			$installer->getIdxName('customer_visitor', ['device_type']),
+			['device_type']
+		); 
+        
+		$connection->addIndex(
+			$installer->getTable('customer_visitor'),
+			$installer->getIdxName('customer_visitor', ['is_reader']),
+			['is_reader']
 		);  
         
 		$connection->addIndex(
 			$installer->getTable('customer_visitor'),
-			$installer->getIdxName('customer_visitor', ['ismobiledevice']),
-			['ismobiledevice']
+			$installer->getIdxName('customer_visitor', ['is_mobile']),
+			['is_mobile']
 		); 		
         
 		$connection->addIndex(
 			$installer->getTable('customer_visitor'),
-			$installer->getIdxName('customer_visitor', ['istablet']),
-			['istablet']
+			$installer->getIdxName('customer_visitor', ['is_tablet']),
+			['is_tablet']
 		); 		
         
 		$connection->addIndex(
 			$installer->getTable('customer_visitor'),
-			$installer->getIdxName('customer_visitor', ['crawler']),
-			['crawler']
+			$installer->getIdxName('customer_visitor', ['is_crawler']),
+			['is_crawler']
 		); 		
                                             
         $installer->endSetup();
