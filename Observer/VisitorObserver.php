@@ -64,7 +64,7 @@ class VisitorObserver implements ObserverInterface
 				if (isset($map[$key])) {
 					$key = $map[$key];
 				}
-				if (!empty($value)) {
+				if (!empty($value) && $value != 'unknown') {
 					$data[$key] = $value;
 				}				
 			}
