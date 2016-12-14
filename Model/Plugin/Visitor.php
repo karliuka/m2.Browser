@@ -53,7 +53,7 @@ class Visitor
      */	
     public function beforeInitByRequest($subject, $observer) 
     {
-        $subject->setSkipRequestLogging(false);  $this->session->setAbb(1234); 
+        $subject->setSkipRequestLogging(false); 
         return null;
     }
     
