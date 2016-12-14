@@ -24,9 +24,26 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 	<!--
+	browser processor config
+	-->	
+    <type name="Faonni\Browser\Model\Processor\ProcessorConfig">		
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="browscap_native" xsi:type="array">
+                    <item name="label" xsi:type="string">Browscap Native</item>
+                    <item name="class" xsi:type="string">Faonni\Browser\Model\Processor\BrowscapNative</item>
+                </item>
+                <item name="browscap_php" xsi:type="array">
+                    <item name="label" xsi:type="string">Browscap Php</item>
+                    <item name="class" xsi:type="string">Faonni\Browser\Model\Processor\BrowscapPhp</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>	
+	<!--
 	plugin for a class Magento\Customer\Model\Visitor
 	-->		
     <type name="\Magento\Customer\Model\Visitor">
         <plugin name="Faonni_Browser" type="Faonni\Browser\Model\Plugin\Visitor" />
-</type>
+	</type>
 </config>

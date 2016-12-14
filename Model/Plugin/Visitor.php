@@ -21,11 +21,29 @@
  */
 namespace Faonni\Browser\Model\Plugin; 
 
+use Magento\Framework\Session\SessionManagerInterface;
+
 /**
  * Plugin for \Magento\Customer\Model\Visitor
  */
 class Visitor
 {
+    /**
+     * @var \Magento\Framework\Session\SessionManagerInterface
+     */
+    protected $session;
+    
+    /**
+     * @param \Magento\Framework\Session\SessionManagerInterface $session
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     */
+    public function __construct(
+        SessionManagerInterface $session
+    ) {
+        $this->session = $session;
+    }
+        	
     /**
      * Initialization visitor by request
      *
@@ -35,7 +53,7 @@ class Visitor
      */	
     public function beforeInitByRequest($subject, $observer) 
     {
-        $subject->setSkipRequestLogging(false);       
+        $subject->setSkipRequestLogging(false);  $this->session->setAbb(1234); 
         return null;
     }
     
