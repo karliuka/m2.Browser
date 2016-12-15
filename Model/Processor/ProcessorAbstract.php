@@ -29,6 +29,13 @@ use Magento\Framework\DataObject;
 abstract class ProcessorAbstract extends DataObject
 {
 	/**
+	 * Object field map
+	 *
+	 * @var array
+	 */	
+	protected $_map = [];
+		
+	/**
 	 * Object attributes
 	 *
 	 * @var array
@@ -114,6 +121,19 @@ abstract class ProcessorAbstract extends DataObject
 	];
 	
     /**
+     * Constructor
+     *
+     * By default is looking for first argument as array and assigns it as object attributes
+     * This behavior may change in child classes
+     *
+     * @param array $map
+     */
+    public function __construct(array $map=[])
+    {
+        $this->_map = $map;
+    }
+    	
+    /**
      * Tells what the user's browser is capable of.
      * The information is returned in an object or an array which will contain various data elements 
      * representing, for instance, the browser's major and minor version numbers and ID string; 
@@ -121,5 +141,30 @@ abstract class ProcessorAbstract extends DataObject
      * @param string $userAgent The User Agent to be analyzed.
      * @return array|bool
      */
-    abstract public function getBrowser($userAgent=null);	
+    abstract public function getBrowser($userAgent=null);
+    
+    /**
+     * Convert browser fields
+     *
+     * @param   array $browser
+     * @return  array
+     */
+    public function convert($browser=null)
+    {
+        if (is_array($browser)) {
+			foreach ($this->_data as $key => $value) {
+				if (isset($this->_map[$key])) {
+					$key = $this->_map[$key];
+				}
+				
+				if (!isset($browser[$key])) continue;
+				
+				$value = (in_array($browser[$key], ['unknown', 'Various'])) 
+					? '' 
+					: $browser[$key];
+				$this->setdata($key, $value);
+			}
+		}
+        return $this->getData();
+    }    	
 }

@@ -34,11 +34,5 @@
 	-->		
     <event name="customer_session_init">
         <observer name="faonni_browser" instance="Faonni\Browser\Observer\SessionObserver" />
-    </event> 
-	<!--
-	event visitor_init
-	-->		
-    <event name="visitor_init">
-        <observer name="faonni_browser" instance="Faonni\Browser\Observer\VisitorObserver" />
-    </event>     
+    </event>    
 </config>

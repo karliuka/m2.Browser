@@ -66,12 +66,15 @@ class ProcessorFactory
         if (!$processorClass) {
             throw new \InvalidArgumentException("Browser processor '{$processorName}' is not defined.");
         }
+        
+        $data['map'] = $this->_config->getProcessorFieldMap($processorName);
+                
         $processorInstance = $this->_objectManager->create($processorClass, $data);
         if (!$processorInstance instanceof \Faonni\Browser\Model\Processor\ProcessorAbstract) {
             throw new \UnexpectedValueException(
                 "Class '{$processorClass}' has to implement \\Faonni\\Browser\\Model\\Processor\\ProcessorAbstract."
             );
-        }
+        }        
         return $processorInstance;
     }
 }

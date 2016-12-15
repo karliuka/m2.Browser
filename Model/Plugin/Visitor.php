@@ -22,40 +22,92 @@
 namespace Faonni\Browser\Model\Plugin; 
 
 use Magento\Framework\Session\SessionManagerInterface;
+use Magento\Framework\HTTP\Header;
+use Magento\Framework\View\Element\Context;
+use Faonni\Browser\Model\Processor\ProcessorFactory;
 
 /**
  * Plugin for \Magento\Customer\Model\Visitor
  */
 class Visitor
-{
+{ 
+    /**
+     * @var \Magento\Framework\HTTP\Header
+     */
+    protected $_httpHeader; 
+    	
     /**
      * @var \Magento\Framework\Session\SessionManagerInterface
      */
-    protected $session;
+    protected $_session;
+
+    /**
+     * System event manager
+     *
+     * @var \Magento\Framework\Event\ManagerInterface
+     */
+    protected $_eventManager;    
+    
+    /**
+     * @var \Faonni\Browser\Model\Processor\ProcessorFactory
+     */
+    protected $_processorFactory;       
     
     /**
      * @param \Magento\Framework\Session\SessionManagerInterface $session
+     * @param \Faonni\Browser\Model\Processor\ProcessorFactory $processorFactory
+     * @param \Magento\Framework\HTTP\Header $httpHeader
+     * @param \Magento\Framework\View\Element\Context $context 
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
-        SessionManagerInterface $session
+        SessionManagerInterface $session,
+        ProcessorFactory $processorFactory,
+        Header $httpHeader,
+        Context $context
     ) {
-        $this->session = $session;
+        $this->_session = $session;
+        $this->_processorFactory = $processorFactory;
+        $this->_httpHeader = $httpHeader;
+        $this->_eventManager = $context->getEventManager();
     }
-        	
+    
     /**
      * Initialization visitor by request
      *
      * @param $subject \Magento\Customer\Model\Visitor
-     * @param $observer \Magento\Framework\Event\Observer
-     * @return \Faonni\Browser\Model\Plugin\Visitor
-     */	
-    public function beforeInitByRequest($subject, $observer) 
+     * @param $proceed \callable	 
+     * @param $observer \Magento\Framework\Event\Observer 
+     * @return \Magento\Customer\Model\Visitor
+     */
+    public function aroundInitByRequest($subject, $proceed, $observer)    
     {
-        $subject->setSkipRequestLogging(false); 
-        return null;
-    }
+        if ($subject->isModuleIgnored($observer)) {
+            return $subject;
+        }
+
+        if ($this->_session->getVisitorData()) {
+            $subject->setData($this->_session->getVisitorData());
+        }
+
+        $subject->setLastVisitAt((new \DateTime())->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT));
+
+        if (!$subject->getId()) {	
+					
+			$processor = $this->_processorFactory->create('browscap_native');
+			$browserData = $processor->getBrowser($this->_httpHeader->getHttpUserAgent()); 
+			if ($browserData) {
+				$subject->addData($browserData);
+			}
+            $subject->setSessionId($this->_session->getSessionId());
+            $subject->save();
+            
+            $this->_eventManager->dispatch('visitor_init', ['visitor' => $subject]);
+            $this->_session->setVisitorData($subject->getData());
+        }				
+		return $subject;
+	}
     
     /**
      * Save visitor by request

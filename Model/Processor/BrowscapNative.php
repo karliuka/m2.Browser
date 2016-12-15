@@ -38,5 +38,7 @@ class BrowscapNative extends ProcessorAbstract
      */
     public function getBrowser($userAgent=null)
     {
+		$browser = get_browser($userAgent, true);		
+		return $this->convert($browser);
 	}
 }

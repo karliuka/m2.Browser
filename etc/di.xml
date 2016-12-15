@@ -32,10 +32,22 @@
                 <item name="browscap_native" xsi:type="array">
                     <item name="label" xsi:type="string">Browscap Native</item>
                     <item name="class" xsi:type="string">Faonni\Browser\Model\Processor\BrowscapNative</item>
+                    <item name="fieldMap" xsi:type="array">
+						<item name="is_mobile" xsi:type="string">ismobiledevice</item>
+						<item name="is_tablet" xsi:type="string">istablet</item>
+						<item name="is_reader" xsi:type="string">issyndicationreader</item>
+						<item name="is_crawler" xsi:type="string">crawler</item>
+                    </item>
                 </item>
                 <item name="browscap_php" xsi:type="array">
                     <item name="label" xsi:type="string">Browscap Php</item>
                     <item name="class" xsi:type="string">Faonni\Browser\Model\Processor\BrowscapPhp</item>
+                    <item name="fieldMap" xsi:type="array">
+						<item name="is_mobile" xsi:type="string">ismobiledevice</item>
+						<item name="is_tablet" xsi:type="string">istablet</item>
+						<item name="is_reader" xsi:type="string">issyndicationreader</item>
+						<item name="is_crawler" xsi:type="string">crawler</item>
+                    </item>                    
                 </item>
             </argument>
         </arguments>

@@ -92,4 +92,18 @@ class ProcessorConfig
         }
         return null;
     }
+    
+    /**
+     * Retrieve field map that corresponds to processor name
+     *
+     * @param string $processorName
+     * @return array|null
+     */
+    public function getProcessorFieldMap($processorName)
+    {
+        if (isset($this->_config[$processorName]['fieldMap'])) {
+            return $this->_config[$processorName]['fieldMap'];
+        }
+        return null;
+    }    
 }
