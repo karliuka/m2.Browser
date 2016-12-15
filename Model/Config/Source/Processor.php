@@ -39,7 +39,7 @@ class Processor implements ArrayInterface
      * 
      * @var array
      */
-    private $_options;
+    protected $_options;
 
     /**
      * @param \Faonni\Browser\Model\Processor\ProcessorConfig $config
