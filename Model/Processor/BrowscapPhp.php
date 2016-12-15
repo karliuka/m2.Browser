@@ -23,12 +23,20 @@ namespace Faonni\Browser\Model\Processor;
 
 use Faonni\Browser\Model\Processor\ProcessorAbstract;
 
+/**
+ * Faonni browser processor BrowscapPhp model
+ */
 class BrowscapPhp extends ProcessorAbstract
 {
     /**
-     * @return array
+     * Tells what the user's browser is capable of.
+     * The information is returned in an object or an array which will contain various data elements 
+     * representing, for instance, the browser's major and minor version numbers and ID string; 
+     * 
+     * @param string $userAgent The User Agent to be analyzed.
+     * @return array|bool
      */
-    public function getBrowser()
+    public function getBrowser($userAgent=null)
     {
 	}
 }

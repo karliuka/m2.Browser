@@ -58,7 +58,7 @@ class ProcessorFactory
      * @param array $data
      * @throws \InvalidArgumentException
      * @throws \UnexpectedValueException
-     * @return \Faonni\Browser\Model\Processor\ProcessorInterface
+     * @return \Faonni\Browser\Model\Processor\ProcessorAbstract
      */
     public function create($processorName, array $data = [])
     {
@@ -67,9 +67,9 @@ class ProcessorFactory
             throw new \InvalidArgumentException("Browser processor '{$processorName}' is not defined.");
         }
         $processorInstance = $this->_objectManager->create($processorClass, $data);
-        if (!$processorInstance instanceof \Faonni\Browser\Model\Processor\ProcessorInterface) {
+        if (!$processorInstance instanceof \Faonni\Browser\Model\Processor\ProcessorAbstract) {
             throw new \UnexpectedValueException(
-                "Class '{$processorClass}' has to implement \\Faonni\\Browser\\Model\\Processor\\ProcessorInterface."
+                "Class '{$processorClass}' has to implement \\Faonni\\Browser\\Model\\Processor\\ProcessorAbstract."
             );
         }
         return $processorInstance;
