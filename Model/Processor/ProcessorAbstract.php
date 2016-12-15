@@ -28,30 +28,20 @@ use Magento\Framework\DataObject;
  */
 abstract class ProcessorAbstract extends DataObject
 {
-    /**
-     * Tells what the user's browser is capable of.
-     * The information is returned in an object or an array which will contain various data elements 
-     * representing, for instance, the browser's major and minor version numbers and ID string; 
-     * 
-     * @param string $userAgent The User Agent to be analyzed.
-     * @return array|bool
-     */
-    abstract public function getBrowser($userAgent=null);
-	
-    /**
-     * Object attributes
-     *
-     * @var array
-     */	
+	/**
+	 * Object attributes
+	 *
+	 * @var array
+	 */	
 	protected $_data = [
-	
+
 	/**
 	 * Name of the browser
 	 *
 	 * @var string
 	 */		
 	'browser' => null,	
-	
+
 	/**
 	 * Version of the browser
 	 *
@@ -64,62 +54,72 @@ abstract class ProcessorAbstract extends DataObject
 	 *
 	 * @var string
 	 */	
-    'platform' => null, 
-	
+	'platform' => null, 
+
 	/**
 	 * Full version number of this device's operating system
 	 *
 	 * @var string
 	 */		
 	'platform_version' => null, 
-	
+
 	/**
 	 * Name of device browser is running on
 	 *
 	 * @var string
 	 */		
-    'device_name' => null, 
-	
+	'device_name' => null, 
+
 	/**
 	 * Maker of device browser is running on
 	 *
 	 * @var string
 	 */		
-    'device_maker' => null,	
-	
+	'device_maker' => null,	
+
 	/**
 	 * Type of device browser is running on
 	 *
 	 * @var string
 	 */		
-    'device_type' => null,	
-	
+	'device_type' => null,	
+
 	/**
 	 * True if the browser is a mobile device such as a smartphone or PDA
 	 *
 	 * @var bool
 	 */	    
-    'is_mobile' => false, 
-	
+	'is_mobile' => false, 
+
 	/**
 	 * True if the browser is a tablet
 	 *
 	 * @var bool
 	 */	
 	'is_tablet' => false, 
-	
+
 	/**
 	 * True if the browser is an RSS, Atom, or other XML-based feed reader or aggregator
 	 *
 	 * @var bool
 	 */		
-    'is_reader' => false, 
-	
+	'is_reader' => false, 
+
 	/**
 	 * True if the browser is automated software crawling the website
 	 *
 	 * @var bool
 	 */		
-    'is_crawler' => false, 
-	];	
+	'is_crawler' => false, 
+	];
+	
+    /**
+     * Tells what the user's browser is capable of.
+     * The information is returned in an object or an array which will contain various data elements 
+     * representing, for instance, the browser's major and minor version numbers and ID string; 
+     * 
+     * @param string $userAgent The User Agent to be analyzed.
+     * @return array|bool
+     */
+    abstract public function getBrowser($userAgent=null);	
 }
