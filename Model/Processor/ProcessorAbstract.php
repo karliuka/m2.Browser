@@ -94,30 +94,30 @@ abstract class ProcessorAbstract extends DataObject
 	/**
 	 * True if the browser is a mobile device such as a smartphone or PDA
 	 *
-	 * @var bool
+	 * @var int
 	 */	    
-	'is_mobile' => false, 
+	'is_mobile' => 0, 
 
 	/**
 	 * True if the browser is a tablet
 	 *
-	 * @var bool
+	 * @var int
 	 */	
-	'is_tablet' => false, 
+	'is_tablet' => 0, 
 
 	/**
 	 * True if the browser is an RSS, Atom, or other XML-based feed reader or aggregator
 	 *
-	 * @var bool
+	 * @var int
 	 */		
-	'is_reader' => false, 
+	'is_reader' => 0, 
 
 	/**
 	 * True if the browser is automated software crawling the website
 	 *
-	 * @var bool
+	 * @var int
 	 */		
-	'is_crawler' => false, 
+	'is_crawler' => 0, 
 	];
 	
     /**
@@ -153,15 +153,12 @@ abstract class ProcessorAbstract extends DataObject
     {
         if (is_array($browser)) {
 			foreach ($this->_data as $key => $value) {
-				if (isset($this->_map[$key])) {
-					$key = $this->_map[$key];
-				}
+				$column = (isset($this->_map[$key])) ? $this->_map[$key] : $key;
+				if (!isset($browser[$column])) continue;
 				
-				if (!isset($browser[$key])) continue;
-				
-				$value = (in_array($browser[$key], ['unknown', 'Various'])) 
+				$value = (in_array($browser[$column], ['unknown', 'Various'])) 
 					? '' 
-					: $browser[$key];
+					: $browser[$column];
 				$this->setdata($key, $value);
 			}
 		}
