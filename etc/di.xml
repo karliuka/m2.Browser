@@ -56,6 +56,13 @@
 	plugin for a class Magento\Customer\Model\Visitor
 	-->		
     <type name="\Magento\Customer\Model\Visitor">
-        <plugin name="Faonni_Browser" type="Faonni\Browser\Model\Plugin\Visitor" />
+        <plugin name="Faonni_Browser" type="Faonni\Browser\Model\Plugin\Visitor" sortOrder="1" />
+        <arguments>
+            <argument name="ignoredUserAgents" xsi:type="array">
+                <item name="google1" xsi:type="string">*</item>
+                <item name="google2" xsi:type="string">*</item>
+                <item name="google3" xsi:type="string">*</item>
+            </argument>
+        </arguments>        
 	</type>
 </config>

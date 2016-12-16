@@ -100,6 +100,7 @@ class Visitor
      */
     public function aroundInitByRequest($subject, $proceed, $observer)    
     {	
+        $subject->setSkipRequestLogging(false);        
         if ($subject->isModuleIgnored($observer)) {
             return $subject;
         }
@@ -127,35 +128,13 @@ class Visitor
 			if ($browserInfo) {				
 				$subject->addData($browserInfo);
 			}
+			
             $subject->setSessionId($this->_session->getSessionId());
             $subject->save();
             
             $this->_eventManager->dispatch('visitor_init', ['visitor' => $subject]);  			
             $this->_session->setVisitorData($subject->getData());
-        }				
+        }       		
 		return $subject;
-	}
-
-    /**
-     * Save visitor by request
-     *
-     * @param $subject \Magento\Customer\Model\Visitor
-     * @param $proceed \callable	 
-     * @param   \Magento\Framework\Event\Observer $observer
-     * @return  \Magento\Customer\Model\Visitor
-     */
-    public function aroundSaveByRequest($subject, $proceed, $observer)
-    {
-		if ($subject->isModuleIgnored($observer)) {
-            return $this;
-        }	
-        try {
-            $subject->save();
-            $this->_eventManager->dispatch('visitor_activity_save', ['visitor' => $subject]);
-            $this->_session->setVisitorData($subject->getData());
-        } catch (\Exception $e) {
-            $this->_logger->critical($e);
-        }
-        return $this;
-    }    	
+	}	
 } 
