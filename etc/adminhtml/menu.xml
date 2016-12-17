@@ -24,6 +24,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-		<add id="Faonni_Browser::user_agent" title="User Agents" translate="title" module="Faonni_Browser" sortOrder="49" parent="Magento_Customer::customer" action="customer/useragent/" resource="Faonni_Browser::user_agent"/>
+		<add id="Faonni_Browser::info" title="User Agents" translate="title" module="Faonni_Browser" sortOrder="49" parent="Magento_Customer::customer" action="browser/info" resource="Faonni_Browser::info"/>
     </menu>
 </config>

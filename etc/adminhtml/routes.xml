@@ -24,8 +24,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="admin">
-        <route id="customer">
-            <module name="Faonni_Browser" after="Magento_Customer" />
+        <route id="browser" frontName="browser">
+            <module name="Faonni_Browser" />
         </route>
     </router>
 </config> 
