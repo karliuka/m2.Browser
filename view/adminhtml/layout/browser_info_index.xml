@@ -1,90 +1,11 @@
 <?xml version="1.0"?>
-<!--
 
--->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <block class="Faonni\Browser\Block\Adminhtml\Info" name="adminhtml.faonni.browser.info.grid.container">
-                <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.faonni.browser.info.grid" as="grid">
-                    <arguments>
-                        <argument name="id" xsi:type="string">faonni_browser_info_grid</argument>
-                        <argument name="dataSource" xsi:type="object">Faonni\Browser\Model\ResourceModel\Info\Collection</argument>
-                        <argument name="default_sort" xsi:type="string">sort_order</argument>
-                        <argument name="default_dir" xsi:type="string">ASC</argument>
-                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
-                    </arguments>
-                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.faonni.browser.info.grid.columnSet">
-                        <arguments>
-                            <argument name="rowUrl" xsi:type="array">
-                                <item name="path" xsi:type="string">browser/*/edit</item>
-                                <item name="extraParamsTemplate" xsi:type="array">
-                                    <item name="id" xsi:type="string">getId</item>
-                                </item>
-                            </argument>
-                        </arguments>
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="info_id">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">ID</argument>
-                                <argument name="index" xsi:type="string">info_id</argument>
-                                <argument name="column_css_class" xsi:type="string">col-id</argument>
-                                <argument name="header_css_class" xsi:type="string">col-id</argument>
-                                <argument name="sortOrder" xsi:type="number">201</argument>
-                            </arguments>
-                        </block>
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="browser">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">Browser</argument>
-                                <argument name="index" xsi:type="string">browser</argument>
-                                <argument name="sortOrder" xsi:type="number">202</argument>
-                            </arguments>
-                        </block>
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="version">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">Browser Version</argument>
-                                <argument name="index" xsi:type="string">version</argument>
-                                <argument name="sortOrder" xsi:type="number">203</argument>
-                            </arguments>
-                        </block>
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="platform">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">OS</argument>
-                                <argument name="index" xsi:type="string">platform</argument>
-                                <argument name="sortOrder" xsi:type="number">204</argument>
-                            </arguments>
-                        </block>
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="platform_version">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">OS Version</argument>
-                                <argument name="index" xsi:type="string">platform_version</argument>
-                                <argument name="sortOrder" xsi:type="number">205</argument>
-                            </arguments>
-                        </block>
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="device_name">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">Device</argument>
-                                <argument name="index" xsi:type="string">device_name</argument>
-                                <argument name="sortOrder" xsi:type="number">206</argument>
-                            </arguments>
-                        </block> 
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="device_maker">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">Device Maker</argument>
-                                <argument name="index" xsi:type="string">device_maker</argument>
-                                <argument name="sortOrder" xsi:type="number">207</argument>
-                            </arguments>
-                        </block>  
-                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="device_type">
-                            <arguments>
-                                <argument name="header" xsi:type="string" translate="true">Device Type</argument>
-                                <argument name="index" xsi:type="string">device_type</argument>
-                                <argument name="sortOrder" xsi:type="number">208</argument>
-                            </arguments>
-                        </block>                                                                                                                                                                        
-                    </block>
-                </block>
-            </block>
+            <uiComponent name="browser_info_grid"/>
         </referenceContainer>
     </body>
-</page> 
+</page>

@@ -65,4 +65,11 @@
             </argument>
         </arguments>        
 	</type>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="browser_info_grid_data_source" xsi:type="string">Faonni\Browser\Model\ResourceModel\Info\Grid\Collection</item>
+            </argument>
+        </arguments>
+	</type>
 </config>

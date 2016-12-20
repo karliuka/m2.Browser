@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Faonni
+ *  
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade module to newer
+ * versions in the future.
+ * 
+ * @package     Faonni_Browser
+ * @copyright   Copyright (c) 2016 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">browser_info_grid.browser_info_grid_data_source</item>
+            <item name="deps" xsi:type="string">browser_info_grid.browser_info_grid_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">browser_info_columns</item>
+    </argument>
+    
+    <dataSource name="browser_info_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">browser_info_grid_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">info_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">info_id</item>
+                    </item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+            
+	<!-- new columns -->
+    <columns name="browser_info_columns">
+        <column name="info_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>                    
+                    
+                    <item name="sortOrder" xsi:type="number">101</item>
+                </item>
+            </argument>
+        </column>
+        <column name="browser">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Browser</item>
+					<item name="sortOrder" xsi:type="number">201</item>
+                </item>
+            </argument>
+        </column>
+        <column name="version">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Browser Version</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+					<item name="sortOrder" xsi:type="number">202</item>
+                </item>
+            </argument>
+        </column>
+        <column name="platform">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">OS</item>
+					<item name="sortOrder" xsi:type="number">203</item>
+                </item>
+            </argument>
+        </column>
+        <column name="platform_version">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">OS Version</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+					<item name="sortOrder" xsi:type="number">204</item>
+                </item>
+            </argument>
+        </column>        
+        <column name="device_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Device</item>
+					<item name="sortOrder" xsi:type="number">205</item>
+                </item>
+            </argument>
+        </column>
+        <column name="device_maker">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Device Maker</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+					<item name="sortOrder" xsi:type="number">206</item>
+                </item>
+            </argument>
+        </column> 
+        <column name="device_type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Device Type</item>
+					<item name="sortOrder" xsi:type="number">207</item>
+                </item>
+            </argument>
+        </column> 		
+        <column name="is_mobile">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Is mobile</item>
+					<item name="sortOrder" xsi:type="number">208</item>
+                </item>
+            </argument>
+        </column> 
+        <column name="is_tablet">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Is tablet</item>
+					<item name="sortOrder" xsi:type="number">209</item>
+                </item>
+            </argument>
+        </column> 
+        <column name="is_reader">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Is reader</item>
+					<item name="sortOrder" xsi:type="number">210</item>
+                </item>
+            </argument>
+        </column> 
+        <column name="is_crawler">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Is crawler</item>
+					<item name="sortOrder" xsi:type="number">211</item>
+                </item>
+            </argument>
+        </column>                                       
+    </columns>
+</listing>
