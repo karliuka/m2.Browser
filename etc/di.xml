@@ -65,6 +65,9 @@
             </argument>
         </arguments>        
 	</type>
+	<!--
+	ui grid
+	-->		
 	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
