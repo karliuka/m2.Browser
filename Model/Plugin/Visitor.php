@@ -55,11 +55,6 @@ class Visitor
     protected $_processorFactory;  
 
     /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $_logger;
-
-    /**
      * Object Manager instance
      *
      * @var \Magento\Framework\ObjectManagerInterface
@@ -87,7 +82,6 @@ class Visitor
         $this->_httpHeader = $httpHeader;
 		$this->_objectManager = $objectManager;
         $this->_eventManager = $context->getEventManager();
-		$this->_logger = $context->getLogger();
     }
     
     /**
