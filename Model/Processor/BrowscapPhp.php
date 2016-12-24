@@ -21,10 +21,10 @@
  */
 namespace Faonni\Browser\Model\Processor;
 
-use Faonni\Browser\Model\Processor\ProcessorAbstract;
-use Faonni\Browser\Model\Browscap;
 use Magento\Framework\Filesystem;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Faonni\Browser\Model\Processor\ProcessorAbstract;
+use Faonni\Browser\Model\Browscap;
 
 /**
  * Faonni browser processor BrowscapPhp model
