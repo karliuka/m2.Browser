@@ -155,7 +155,9 @@ abstract class ProcessorAbstract extends DataObject
 			foreach ($this->_data as $key => $value) {
 				$column = (isset($this->_map[$key])) ? $this->_map[$key] : $key;
 				if (!isset($browser[$column])) continue;
-				
+				if (is_bool($browser[$column]) === true) {
+					$browser[$column] = (int)$browser[$column];
+				}
 				$value = (in_array($browser[$column], ['unknown', 'Various'])) 
 					? '' 
 					: $browser[$column];

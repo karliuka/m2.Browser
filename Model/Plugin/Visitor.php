@@ -113,7 +113,7 @@ class Visitor
 			if ($info->getId()) {
 				$browserInfo = $info->getBrowser(); 
 			} else {
-				$processor = $this->_processorFactory->create('browscap_native');
+				$processor = $this->_processorFactory->create('browscap_php');
 				$browserInfo = $processor->getBrowser($userAgent);
 				$info->addData($browserInfo);
 				$info->save();
