@@ -36,7 +36,7 @@ class Info extends Container
     protected function _construct()
     {
         $this->_controller = 'info';
-        $this->_headerText = __('Info');
+        $this->_headerText = __('Browsers Info');
 
         parent::_construct();
     }

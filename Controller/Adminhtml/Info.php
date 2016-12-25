@@ -80,7 +80,7 @@ abstract class Info extends Action
         $this->_view->loadLayout();
 		
         $this->_setActiveMenu('Faonni_Browser::info')
-			->_addBreadcrumb(__('Info'), __('Info'));
+			->_addBreadcrumb(__('Browsers Info'), __('Browsers Info'));
 			
         return $this;
     }
@@ -92,6 +92,6 @@ abstract class Info extends Action
      */
     protected function _isAllowed()
     {
-        return true;//$this->_authorization->isAllowed('Faonni_Browser::info');
+        return $this->_authorization->isAllowed('Faonni_Browser::info');
     }
 }

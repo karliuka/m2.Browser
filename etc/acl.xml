@@ -27,9 +27,7 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
-                    <resource id="Faonni_Browser::section" title="Browser" sortOrder="90">
-                        <resource id="Faonni_Browser::info" title="Browser Infos" sortOrder="10" />
-                    </resource>
+                    <resource id="Faonni_Browser::info" title="Browsers Info" sortOrder="49" />
                 </resource>
             </resource>
         </resources>

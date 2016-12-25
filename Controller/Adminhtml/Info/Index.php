@@ -39,10 +39,10 @@ class Index extends Info
         $resultPage = $this->resultPageFactory->create();
 		
         $resultPage->setActiveMenu('Faonni_Browser::info');
-        $resultPage->getConfig()->getTitle()->prepend(__('Info'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Browsers Info'));
 		
-        $resultPage->addBreadcrumb(__('Info'), __('Info'));
-        $resultPage->addBreadcrumb(__('Info'), __('Info'));
+        $resultPage->addBreadcrumb(__('Browsers Info'), __('Browsers Info'));
+        $resultPage->addBreadcrumb(__('Browsers Info'), __('Browsers Info'));
 		
         return $resultPage;
     }
