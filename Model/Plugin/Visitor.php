@@ -26,6 +26,7 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\HTTP\Header;
 use Magento\Framework\View\Element\Context;
 use Faonni\Browser\Model\Processor\ProcessorFactory;
+use Faonni\Browser\Helper\Data as BrowserHelper;
 
 /**
  * Plugin for \Magento\Customer\Model\Visitor
@@ -59,13 +60,21 @@ class Visitor
      *
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager;		
+    protected $_objectManager;
+    
+    /**
+     * Helper instance
+     *
+     * @var \Faonni\Browser\Helper\Data
+     */
+    protected $_helper;    		
     
     /**
      * @param \Magento\Framework\Session\SessionManagerInterface $session
      * @param \Faonni\Browser\Model\Processor\ProcessorFactory $processorFactory
      * @param \Magento\Framework\HTTP\Header $httpHeader
 	 * @param \Magento\Framework\ObjectManagerInterface $objectManager
+     * @param \Faonni\Browser\Helper\Data $helper
      * @param \Magento\Framework\View\Element\Context $context 
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -75,12 +84,14 @@ class Visitor
         ProcessorFactory $processorFactory,
         Header $httpHeader,
 		ObjectManagerInterface $objectManager,
+		BrowserHelper $helper,
         Context $context
     ) {
         $this->_session = $session;
         $this->_processorFactory = $processorFactory;
         $this->_httpHeader = $httpHeader;
 		$this->_objectManager = $objectManager;
+		$this->_helper = $helper;
         $this->_eventManager = $context->getEventManager();
     }
     
@@ -113,7 +124,7 @@ class Visitor
 			if ($info->getId()) {
 				$browserInfo = $info->getBrowser(); 
 			} else {
-				$processor = $this->_processorFactory->create('browscap_php');
+				$processor = $this->_processorFactory->create($this->_helper->getProcessor());
 				$browserInfo = $processor->getBrowser($userAgent);
 				$info->addData($browserInfo);
 				$info->save();

@@ -26,16 +26,9 @@
     <system>
         <section id="web">
             <group id="browser_capabilities">
-                <field id="enabled" translate="label" type="select" sortOrder="750" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enable Advanced Mode</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>                      
-				</field>
 				<field id="processor" translate="label" type="select" sortOrder="760" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-					<label>Processor of detection</label>
-					<source_model>Faonni\Browser\Model\Config\Source\Processor</source_model>
-					<depends>
-						<field id="enabled">1</field>
-					</depends>                      
+					<label>Advanced Mode Processor</label>
+					<source_model>Faonni\Browser\Model\Config\Source\Processor</source_model>                   
 				</field> 				
             </group>
         </section>

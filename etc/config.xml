@@ -26,7 +26,6 @@
     <default>
         <web>
             <browser_capabilities>
-                <enabled>1</enabled>
                 <processor>browscap_php</processor>
             </browser_capabilities>
         </web>
