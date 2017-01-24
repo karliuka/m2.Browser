@@ -55,10 +55,26 @@
         <columnsControls name="columns_controls"/>
         <filters name="listing_filters"/>
         <paging name="listing_paging"/>
-    </listingToolbar>
-            
-	<!-- new columns -->
+    </listingToolbar>           
+	<!-- columns -->
     <columns name="browser_info_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="editorConfig" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">browser_info_grid.browser_info_columns.ids</item>
+                    <item name="enabled" xsi:type="boolean">true</item>
+                    <item name="indexField" xsi:type="string">info_id</item>
+                </item>
+            </item>
+        </argument>		
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">info_id</item>
+                     <item name="sortOrder" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </selectionsColumn>				
         <column name="info_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
