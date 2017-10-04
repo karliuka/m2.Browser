@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © 2016 Magento. All rights reserved.
+ * Copyright © 2011-2017 Karliuka Vitalii(karliuka.vitalii@gmail.com)
+ * 
  * See COPYING.txt for license details.
  */
-
 namespace Faonni\Browser\Model\ResourceModel\Info\Grid;
 
 use Magento\Customer\Ui\Component\DataProvider\Document;
