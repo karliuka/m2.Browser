@@ -4,7 +4,7 @@
  * 
  * See COPYING.txt for license details.
  */
-namespace Faonni\Browser\Model\Plugin; 
+namespace Faonni\Browser\Plugin\Customer\Model; 
 
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
